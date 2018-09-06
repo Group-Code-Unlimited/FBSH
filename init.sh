@@ -1,16 +1,13 @@
 #!/bin/bash
 
-# Get options
-while getopts ":s" opt
-do
-    case $opt in
-	s)
-	    silent=true
-	    ;;
-    esac
-done
+# Exit if command returns non-zero
+set -e 
 
-# Variables
+# Undefined-Variables = Error
+set -u 
+
+# Define variables to Prevent Unbound Errors
+silent=""
 start_dir=$(pwd)
 src_file="Src/init.c"
 bin_file="Run/init"
@@ -35,6 +32,32 @@ last_mod() {
 	stat -c "%Y" $1
     fi
 }
+
+show_help(){
+    cat Docs/run.txt    
+}
+
+# Get options
+while getopts ":h :s" opt
+do
+    case "$opt" in
+	s)
+	    silent=true
+	    ;;
+	h)
+	    printf "Below you will find some useful FBSH tips: \n\n"
+	    show_help
+	    exit 0;
+	    ;;
+	*)
+	    # If an unknown arg is provided
+	    echo "Unknown Argument..."
+	    echo "    Arg: -$OPTARG"
+	    exit -1
+	    ;;
+    esac
+done
+
 
 # Check last modifed date
 last_mod_src=$(last_mod $src_file)

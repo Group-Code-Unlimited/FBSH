@@ -2,8 +2,7 @@
 #include <stdlib.h>
 #include "lib.h"
 
-//Define Symbolic-Constants here
-#define DEBUG 1
+bool start_up(void);
 
 bool clean_up(void);
 
@@ -20,6 +19,15 @@ int main(void){
   }
   
   return 0;
+}
+
+//Define test paramters and such below
+bool start_up(void){
+
+  
+
+  return TRUE;
+
 }
 
 //If clean_up fails --> Return FALSE

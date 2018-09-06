@@ -15,4 +15,5 @@
 #define YELLOW_TEXT "\x1B[33m"
 #define RESET_TEXT "\x1B[0m"
 
-
+//Creation of Typedef's
+typedef short bool;

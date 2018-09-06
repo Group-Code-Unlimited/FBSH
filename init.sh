@@ -30,6 +30,7 @@ launch_shell() {
 # Launch the shell
 if [ -d Run ]
 then
+    make
     s_echo "Binary found. Executing"
     launch_shell
 else
@@ -38,7 +39,7 @@ else
 	exec > /dev/null
     fi
     s_echo "Binary not found. Compiling..."
-    make shell
+    make 
     if [ $silent ]
     then
 	exec

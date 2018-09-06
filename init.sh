@@ -12,6 +12,8 @@ done
 
 # Variables
 start_dir=$(pwd)
+src_file="Src/init.c"
+bin_file="Run/init"
 
 # Functions
 
@@ -27,10 +29,20 @@ launch_shell() {
     ./Run/init
 }
 
+last_mod() {
+    if [ -f $1 ]
+    then
+	stat -c "%Y" $1
+    fi
+}
+
+# Check last modifed date
+last_mod_src=$(last_mod $src_file)
+last_mod_bin=$(last_mod $bin_file)
+
 # Launch the shell
-if [ -d Run ]
+if [[ -f Run/init && $last_mod_bin -ge $last_mod_src ]]
 then
-    make
     s_echo "Binary found. Executing"
     launch_shell
 else
@@ -38,7 +50,7 @@ else
     then
 	exec > /dev/null
     fi
-    s_echo "Binary not found. Compiling..."
+    s_echo "Binary not found or out of date. Compiling..."
     make 
     if [ $silent ]
     then

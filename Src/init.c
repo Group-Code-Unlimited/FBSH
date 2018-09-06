@@ -6,7 +6,7 @@ int main(void){
   
   
 
-  puts("Successfully Initialized :)");
+  puts(YELLOW_TEXT"Successfully Initialized :)"RESET_TEXT);
 
 
   return 0;

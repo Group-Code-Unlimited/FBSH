@@ -3,6 +3,10 @@
 
 int main(void){
 
+  
+  
+
+  puts("Successfully Initialized :)");
 
 
   return 0;

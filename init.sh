@@ -7,7 +7,6 @@ set -e
 set -u 
 
 # Define variables to Prevent Unbound Errors
-silent=""
 start_dir=$(pwd)
 src_file="Src/init.c"
 bin_file="Run/init"
@@ -45,7 +44,7 @@ while getopts ":hv" opt
 do
     case "$opt" in
 	v)
-	    silent=false
+	    silent=""
 	    ;;
 	h)
 	    printf "Below you will find some useful FBSH tips: \n\n"

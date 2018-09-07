@@ -14,6 +14,14 @@ int main(void){
     
         printf("Command: ");
 	fgets(input,sizeof(input),stdin);
+
+	//Remove trailing newline
+	//strtok(input,"\n");
+
+	if(strncmp(input, "exit\n", sizeof(input)) == 0 || strncmp(input, "quit\n",sizeof(input)) == 0){
+	  //Run Clean Up function here
+	  exit(1);
+	}
 	
 }
 

@@ -11,6 +11,8 @@ silent=""
 start_dir=$(pwd)
 src_file="Src/init.c"
 bin_file="Run/init"
+shell_file="Src/shell.c"
+shell_file_bin="Run/shell"
 
 # Functions
 
@@ -63,9 +65,11 @@ done
 # Check last modifed date
 last_mod_src=$(last_mod $src_file)
 last_mod_bin=$(last_mod $bin_file)
+last_mod_shell=$(last_mod $shell_file)
+last_mod_shell_bin=$(last_mod $shell_file_bin)
 
 # Launch the shell
-if [[ ! -f Run/init || $last_mod_bin -lt $last_mod_src ]]
+if [[ ! -f Run/init || $last_mod_bin -lt $last_mod_src || $last_mod_shell_bin -lt $last_mod_shell ]]
 then
     s_echo "Binary not found or out of date. Auto-Compiling...\n\n"
     if [ $silent ]
@@ -79,7 +83,7 @@ fi
 # Extra test to be sure
 if [ -f Run/init ]
 then
-    s_echo "Binary found. Executing\n\n"
+    s_echo "Binary found. Executing!\n\n"
     launch_shell
 else
     echo "Binary NOT found. Please run $0 again."

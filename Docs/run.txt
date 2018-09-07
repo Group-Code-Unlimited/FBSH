@@ -1,1 +1,4 @@
-here are some helpful hints
+Here are some helpful hints about FBSH:
+
+     --The "-h" flag to signal you need help!
+     --The "-s" flag tells the init file to hide all outputs!

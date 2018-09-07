@@ -6,7 +6,8 @@
 
 //User Related Symbolic-Constants below:
 
-#define DEBUG 1
+#define DEBUG 0
+#define SHELL_BIN "Run/shell"
 
 //Define System-Symbolic-Constants
 

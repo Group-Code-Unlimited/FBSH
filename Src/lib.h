@@ -20,4 +20,4 @@
 #define RESET_TEXT "\x1B[0m"
 
 //Creation of Typedef's
-typedef short bool;
+typedef unsigned short bool;

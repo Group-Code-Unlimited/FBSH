@@ -8,11 +8,15 @@ bool clean_up(void);
 
 int main(void){
 
+  start_up();
+  
   if(DEBUG){
   puts(YELLOW_TEXT"Successfully Initialized :)"RESET_TEXT);
   }
+  
   if(clean_up() == TRUE){
     puts("Launching Shell");
+
   }else{
     puts("Initialization Failed :(");
     exit(-1);
@@ -23,9 +27,7 @@ int main(void){
 
 //Define test paramters and such below
 bool start_up(void){
-
   
-
   return TRUE;
 
 }
@@ -33,10 +35,8 @@ bool start_up(void){
 //If clean_up fails --> Return FALSE
 bool clean_up(void){
 
-
   puts(RESET_TEXT);
   
-
   return TRUE;
 
 }

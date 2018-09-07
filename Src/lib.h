@@ -8,7 +8,7 @@
 
 #define DEBUG 1
 
-//Define Symbolic-Constants
+//Define System-Symbolic-Constants
 
 #define TRUE 1
 #define FALSE 0

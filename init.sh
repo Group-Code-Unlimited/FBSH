@@ -67,7 +67,7 @@ last_mod_bin=$(last_mod $bin_file)
 # Launch the shell
 if [[ ! -f Run/init || $last_mod_bin -lt $last_mod_src ]]
 then
-    s_echo "Binary not found or out of date. Compiling...\n\n"
+    s_echo "Binary not found or out of date. Auto-Compiling...\n\n"
     if [ $silent ]
     then
 	make >/dev/null 2>&1

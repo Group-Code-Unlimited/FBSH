@@ -39,13 +39,13 @@ last_mod() {
 show_help(){
     cat Docs/run.txt
 }
-
+silent=true
 # Get options
-while getopts ":hs" opt
+while getopts ":hv" opt
 do
     case "$opt" in
-	s)
-	    silent=true
+	v)
+	    silent=false
 	    ;;
 	h)
 	    printf "Below you will find some useful FBSH tips: \n\n"

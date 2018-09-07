@@ -18,7 +18,7 @@ bin_file="Run/init"
 s_echo() {
     if [ ! $silent ]
     then
-	echo "$@"
+	printf "$@"
     fi
 }
 
@@ -26,6 +26,7 @@ launch_shell() {
     ./Run/init
 }
 
+# Get last modified date if the file exists
 last_mod() {
     if [ -f $1 ]
     then
@@ -34,11 +35,11 @@ last_mod() {
 }
 
 show_help(){
-    cat Docs/run.txt    
+    cat Docs/run.txt
 }
 
 # Get options
-while getopts ":h :s" opt
+while getopts ":hs" opt
 do
     case "$opt" in
 	s)
@@ -64,20 +65,22 @@ last_mod_src=$(last_mod $src_file)
 last_mod_bin=$(last_mod $bin_file)
 
 # Launch the shell
-if [[ -f Run/init && $last_mod_bin -ge $last_mod_src ]]
+if [[ ! -f Run/init || $last_mod_bin -lt $last_mod_src ]]
 then
-    s_echo "Binary found. Executing"
+    s_echo "Binary not found or out of date. Compiling...\n\n"
+    if [ $silent ]
+    then
+	make >/dev/null 2>&1
+    else
+	make
+    fi
+fi
+
+# Extra test to be sure
+if [ -f Run/init ]
+then
+    s_echo "Binary found. Executing\n\n"
     launch_shell
 else
-    if [ $silent ]
-    then
-	exec > /dev/null
-    fi
-    s_echo "Binary not found or out of date. Compiling..."
-    make 
-    if [ $silent ]
-    then
-	exec
-    fi
-    launch_shell
+    echo "Binary NOT found. Please run $0 again."
 fi

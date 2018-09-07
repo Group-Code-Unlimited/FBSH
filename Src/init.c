@@ -22,7 +22,7 @@ int main(void){
       puts("Launching Shell");
     }
       //Test if the binary for the shell exists
-    system("clear");
+    //system("clear");
     run_shell();
   }else{
     puts("Initialization Failed :(");
